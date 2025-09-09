@@ -39,7 +39,7 @@ class Game() :
 
       
         for i in range(num_of_players) :
-            name = input(f"\n ----------------------------------------- \n Enter name for Player {i+1}: \n \n ")
+            name = input(f" \n Enter name for Player {i+1}: ")
             self.players.append(Player(name))
         
 
@@ -60,7 +60,7 @@ class Game() :
 def StartGame() :
     
 
-    print('Loading... \n \n ----------------------------------------- \n ')
+    print('\n Loading... \n \n ----------------------------------------- \n ')
     time.sleep(5)
     game1 = Game(domino_set1)
     game1.shuffle()
@@ -82,23 +82,27 @@ def StartGame() :
                     
             while True :
 
-                move = input('Choose your Move or Write "T" to Draw ')
-                if str(move).lower() == "t" :
-                    if not game1.lr : 
-                        print("No tiles left to draw! , PASS !!! ")
-                        break
-                    x = random.choice(game1.lr)
-                    player.p_set.append(x)
-                    print(f'Your Set : {player.p_set}')
-                    game1.lr.remove(x)
+                try :
+                    move = input('Choose your Move or Write "D" to Draw ')
+                    if str(move).lower() == "d" :
+                        if not game1.lr : 
+                            print("No tiles left to draw! , PASS !!! ")
+                            break
+                        x = random.choice(game1.lr)
+                        player.p_set.append(x)
+                        print(f'Your Set : {player.p_set}')
+                        game1.lr.remove(x)
+                        continue
+                    else : 
+                        move = ast.literal_eval(move)
+                        reversed_move = (move[1], move[0])
+                    if not move in player.p_set : 
+                        print(f'Please Choose From Your Set |^|^|^| ')
+                        continue
+                except :
+                    print('\n ----------------------------------------- \n Please enter a Valid Move from your set or Write "D" to Draw. ')
                     continue
-                else : 
-                    move = ast.literal_eval(move)
-                    reversed_move = (move[1], move[0])
-                    
-                if not move in player.p_set : 
-                    print(f'Please Choose From Your Set |^|^|^| ')
-                    continue
+                
                     
                     
                 
