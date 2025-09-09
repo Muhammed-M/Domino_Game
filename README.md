@@ -19,7 +19,7 @@ Features
 
 Controls
 
-- Writing moves as a Tuple : (1,2) & (6,6)
-- "T" or "t" for Draw new tile (if no tiles is available it will PASS your turn )
-- "L" or "l" for placing your tile on Left of the GameBoard
-- "R" or "r" for placing your tile on Right of the GameBoard
+- Writing moves as a **Tuple** : (1,2) & (6,6)
+- "D" or "d" for **Draw** new tile (if no tiles is available it will PASS your turn )
+- "L" or "l" for placing your tile on **Left** of the GameBoard
+- "R" or "r" for placing your tile on **Right** of the GameBoard
