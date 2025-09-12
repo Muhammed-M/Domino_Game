@@ -9,9 +9,10 @@ The first player to get rid of all their tiles wins!
 
 Features
 
-- Up to **2–4 players**
+- Play with **2 – 4 players**
+- **Solo mode**: Play against the Computer AI
 - Randomized Shuffle **tile distribution**
-- Players can **draw tiles** if stuck
+- Players can **draw tiles** if stuck or just **PASS** 
 - Game detects **valid moves** (including reversed tiles)
 - Declares the **winner** automatically
 
@@ -20,6 +21,6 @@ Features
 Controls
 
 - Writing moves as a **Tuple** : (1,2) & (6,6)
-- "D" or "d" for **Draw** new tile (if no tiles is available it will PASS your turn )
+- "D" or "d" for **Draw** new tile (if no tiles is available it will **PASS** your turn )
 - "L" or "l" for placing your tile on **Left** of the GameBoard
 - "R" or "r" for placing your tile on **Right** of the GameBoard
