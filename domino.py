@@ -20,7 +20,14 @@ class Computer(Player) :
 
     def machine_play(self,game1,gameboard) : 
         while True : 
-            time.sleep(3)    
+            time.sleep(3)   
+            if not gameboard :
+                C = random.choice(self.p_set)
+                gameboard.append(C)
+                self.p_set.remove(C)
+                print(f'Choose your Move or Write "D" to Draw {C}')
+                time.sleep(3)
+                return None
             for move in self.p_set : 
                 reversed_move = (move[1],move[0])
                 if move[1] == gameboard[-1][1] :
@@ -93,7 +100,7 @@ class Game() :
             self.players.append(Computer("Computer"))
 
     
-    def shuffle(self)  : 
+    def shuffle_tiles(self)  : 
         self.lr = self.domino_set[:]
         for player in self.players : 
             for j in range(7) : 
@@ -122,9 +129,10 @@ def StartGame() :
     time.sleep(5)
     game1 = Game(domino_set1)
     game1.create_players()
-    game1.shuffle()
+    game1.shuffle_tiles()
     print(f'\n\n\n OK Great, Lets Start \n \n {"-" * 40} \n')
-    
+
+    random.shuffle(game1.players)
     gameboard = []
     while True : 
         Uplay = True    
@@ -220,4 +228,5 @@ def StartGame() :
 
 
 StartGame()
+
 
