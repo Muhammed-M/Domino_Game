@@ -3,12 +3,7 @@ import time
 import ast
 
 
-
-
 #------------------ Game Structure --------------------------------------
-
-
-
 
 
 class Player() : 
@@ -18,25 +13,12 @@ class Player() :
         self.p_set = [] 
 
     def __str__(self) :
-        return f"Player : {self.name} \nYour Set : {self.p_set}"
-
-
-
-
-domino_set1 = [(i, j) for i in range(6, -1, -1) for j in range(i, -1, -1)] 
-#[(6, 6), (6, 5), (6, 4), (6, 3), (6, 2), (6, 1), (6, 0), 
-#(5, 5), (5, 4), (5, 3), (5, 2), (5, 1), (5, 0), 
-#(4, 4), (4, 3), (4, 2), (4, 1), (4, 0), 
-#(3, 3), (3, 2), (3, 1), (3, 0), 
-#(2, 2), (2, 1), (2, 0), 
-#(1, 1), (1, 0), 
-#(0, 0)]      
+        return f"Player : {self.name} \nYour Set : {self.p_set}"    
 
 
 class Computer(Player) :
 
     def machine_play(self,game1,gameboard) : 
-        
         while True : 
             time.sleep(3)    
             for move in self.p_set : 
@@ -84,23 +66,17 @@ class Computer(Player) :
             print(f'Your Set : {self.p_set}')
             time.sleep(3)
             continue
-                    
-            
-
 
 
 class Game() : 
 
-
     def __init__(self , domino_set) : 
-        
         self.domino_set = domino_set
         self.lr = []
         self.players = []
 
 
     def create_players(self) :
-    
         while True : 
             try :
                 num_of_players = int(input(f'How Many Players ? (minimum : 2) \n {"-" * 40} \n' ))
@@ -110,13 +86,11 @@ class Game() :
             except ValueError : 
                 print(f'\n {"-" * 40} \n Please enter a number. ')
 
-      
         for i in range(num_of_players) :
             name = input(f" \n Enter name for Player {i+1}: ")
             self.players.append(Player(name))
         if num_of_players == 1 : 
             self.players.append(Computer("Computer"))
-        
 
     
     def shuffle(self)  : 
@@ -128,19 +102,22 @@ class Game() :
                 self.lr.remove(x)
 
 
+domino_set1 = [(i, j) for i in range(6, -1, -1) for j in range(i, -1, -1)] 
+#[(6, 6), (6, 5), (6, 4), (6, 3), (6, 2), (6, 1), (6, 0), 
+#(5, 5), (5, 4), (5, 3), (5, 2), (5, 1), (5, 0), 
+#(4, 4), (4, 3), (4, 2), (4, 1), (4, 0), 
+#(3, 3), (3, 2), (3, 1), (3, 0), 
+#(2, 2), (2, 1), (2, 0), 
+#(1, 1), (1, 0), 
+#(0, 0)]  
 
 
-                
 
-            
 #------------------ Game Logic --------------------------------------
-
-
 
 
 def StartGame() :
     
-
     print(f'\n Loading... \n \n {"-" * 40} \n ')
     time.sleep(5)
     game1 = Game(domino_set1)
@@ -150,28 +127,26 @@ def StartGame() :
     
     gameboard = []
     while True : 
-        
-        play = True    
+        Uplay = True    
         for player in game1.players : 
             if not gameboard : 
                 print(f" \n {"-" * 40} \n Game Board : [                     ] \n {"-" * 40} \n")
                 print("Play the First Move")
             else : 
-                print(f'\n {"-" * 50} \n Game Board : {gameboard} \n {"-" * 40} \n ')
+                print(f'\n {"-" * 40} \n Game Board : {gameboard} \n {"-" * 40} \n ')
             print(f'{player.name} Turn')
             print(player)
             
             if player.name == "Computer" : 
                 player.machine_play(game1,gameboard)
-                play = False
+                Uplay = False
                 
 
 
             
-            while play :
+            while Uplay :
 
                 try :
-                    
                     move = input('Choose your Move or Write "D" to Draw ')
                     if str(move).lower() == "d" :
                         if not game1.lr : 
@@ -188,7 +163,6 @@ def StartGame() :
                     if not move in player.p_set : 
                         print(f'Please Choose From Your Set |^|^|^| ')
                         continue
-                    
                 except :
                     print(f'\n {"-" * 40} \n Please enter a Valid Move from your set or Write "D" to Draw. ')
                     continue
@@ -246,3 +220,4 @@ def StartGame() :
 
 
 StartGame()
+
