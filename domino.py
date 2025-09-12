@@ -86,10 +86,10 @@ class Game() :
     def create_players(self) :
         while True : 
             try :
-                num_of_players = int(input(f'How Many Players ? (minimum : 2) \n {"-" * 40} \n' ))
+                num_of_players = int(input(f'How Many Players ? \n {"-" * 40} \n' ))
                 if 1 <= num_of_players <= 4 : 
                     break
-                else : print (f'\n {"-" * 40} \n Minimum num of players is 2 and Max num is 4 ')
+                else : print (f'\n {"-" * 40} \n Min num of players is 1 and Max num is 4 ')
             except ValueError : 
                 print(f'\n {"-" * 40} \n Please enter a number. ')
 
@@ -228,5 +228,6 @@ def StartGame() :
 
 
 StartGame()
+
 
 
